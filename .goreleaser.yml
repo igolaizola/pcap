@@ -1,0 +1,14 @@
+builds:
+  - id: pcap
+    binary: pcap
+    main: ./cmd/pcap
+    goarch:
+      - amd64
+      - arm64
+      - arm
+archives:
+  - id: pcap
+    builds:
+      - pcap
+    format: zip
+    name_template: 'pcap_{{ .Version }}_{{- if eq .Os "darwin" }}macos{{- else }}{{ .Os }}{{ end }}_{{ .Arch }}'
